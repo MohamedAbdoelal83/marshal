@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منيو مارشال - ركن الشاورما والجريل</title>
+    <title>منيو مطعم مارشال - ركن الشاورما والجريل</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -13,11 +13,17 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #0f172a;
+            background-color: #0b0f19;
             color: #f8fafc;
         }
         .gold-gradient {
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(11, 15, 25, 0.6), rgba(11, 15, 25, 0.95)),
+                        url('https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
         }
         /* Hide scrollbar for category tabs */
         .no-scrollbar::-webkit-scrollbar {
@@ -29,20 +35,19 @@
         }
     </style>
 </head>
-<body class="pb-12">
+<body class="pb-16">
 
-    <!-- Header Section -->
-    <header class="bg-slate-900 border-b border-amber-500/20 sticky top-0 z-30 shadow-xl backdrop-blur-md bg-opacity-95">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="w-12 h-12 rounded-full gold-gradient flex items-center justify-center text-slate-900 text-2xl font-black shadow-lg">
-                    <i class="fa-solid fa-fire-flame-curled"></i>
-                </div>
-                <div>
-                    <h1 class="text-2xl font-black text-amber-400 leading-tight">مطعم مارشال</h1>
-                    <p class="text-xs text-slate-400 font-semibold">قائمة الطعام (المنيو)</p>
-                </div>
+    <!-- Header Hero Section with Shawarma Skewer Background -->
+    <header class="hero-bg relative border-b border-amber-500/20 pt-8 pb-10 px-4 text-center shadow-2xl">
+        <div class="max-w-4xl mx-auto flex flex-col items-center">
+            <!-- Restaurant Logo / Icon -->
+            <div class="w-20 h-20 rounded-full gold-gradient flex items-center justify-center text-slate-950 text-4xl font-black shadow-2xl ring-4 ring-amber-500/30 mb-3">
+                <i class="fa-solid fa-fire-flame-curled"></i>
             </div>
+            <h1 class="text-3xl md:text-4xl font-black text-amber-400 tracking-wide drop-shadow-md">مطعم مارشال</h1>
+            <p class="text-sm md:text-base text-slate-300 font-bold mt-1 bg-slate-900/80 px-4 py-1 rounded-full border border-amber-500/30 backdrop-blur-sm">
+                أطعم شاورما وجريل على الأصول 🌯🔥
+            </p>
         </div>
     </header>
 
@@ -50,31 +55,32 @@
 
         <!-- Search Bar -->
         <div class="relative mb-6">
-            <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-            <input type="text" id="search-input" oninput="filterMenu()" placeholder="ابحث عن وجبتك المفضلة..." class="w-full bg-slate-900 border border-slate-700 rounded-xl py-3 pr-11 pl-4 text-slate-100 placeholder-slate-400 focus:outline-none focus:border-amber-500 transition shadow-inner">
+            <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-amber-400 text-lg"></i>
+            <input type="text" id="search-input" oninput="filterMenu()" placeholder="ابحث عن وجبتك المفضلة..." class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl py-3.5 pr-11 pl-4 text-slate-100 placeholder-slate-400 focus:outline-none focus:border-amber-500 shadow-lg">
         </div>
 
-        <!-- Navigation Categories -->
-        <nav class="flex overflow-x-auto gap-2 pb-3 mb-6 no-scrollbar text-sm font-bold sticky top-20 z-20 bg-slate-950/80 p-2 rounded-xl backdrop-blur-md border border-slate-800">
-            <button onclick="scrollToCategory('shawarma')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الشاورما</button>
-            <button onclick="scrollToCategory('grill')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الجريل والسندوتشات</button>
-            <button onclick="scrollToCategory('meals')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الوجبات</button>
-            <button onclick="scrollToCategory('fries')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">البطاطس والباكيت</button>
-            <button onclick="scrollToCategory('sauces')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الصوصات</button>
+        <!-- Sticky Navigation Categories -->
+        <nav class="flex overflow-x-auto gap-2 pb-2 mb-8 no-scrollbar text-sm font-bold sticky top-3 z-30 bg-slate-950/90 p-2 rounded-2xl backdrop-blur-md border border-slate-800 shadow-2xl">
+            <button onclick="scrollToCategory('shawarma')" class="whitespace-nowrap px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الشاورما</button>
+            <button onclick="scrollToCategory('grill')" class="whitespace-nowrap px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الجريل والسندوتشات</button>
+            <button onclick="scrollToCategory('meals')" class="whitespace-nowrap px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الوجبات</button>
+            <button onclick="scrollToCategory('fries')" class="whitespace-nowrap px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">البطاطس والباكيت</button>
+            <button onclick="scrollToCategory('sauces')" class="whitespace-nowrap px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الصوصات</button>
         </nav>
 
         <!-- Dynamic Menu Container -->
-        <div id="menu-container" class="space-y-10"></div>
+        <div id="menu-container" class="space-y-12"></div>
 
     </main>
 
     <script>
-        // Menu Data structured by user sections
+        // Data with High Quality Unsplash Images for each section
         const menuData = [
             {
                 id: 'shawarma',
                 title: 'ركن الشاورما',
                 icon: 'fa-drumstick-bite',
+                image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=800&q=80',
                 items: [
                     { name: 'شاورما فراخ', price: '120 ج.م' },
                     { name: 'شاورما فراخ مشروم', price: '130 ج.م' },
@@ -87,6 +93,7 @@
                 id: 'grill',
                 title: 'ركن الجريل والسندوتشات',
                 icon: 'fa-burger',
+                image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80',
                 hasBreadOptions: true,
                 items: [
                     { name: 'كرسبي', prices: { 'سوري': '120 ج.م', 'فينو': '130 ج.م', 'تورتيلا': '130 ج.م' } },
@@ -110,6 +117,7 @@
                 id: 'meals',
                 title: 'ركن الوجبات',
                 icon: 'fa-utensils',
+                image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
                 items: [
                     { name: 'شاورما عربي', price: '160 ج.م' },
                     { name: 'شاورما ماريا', price: '170 ج.م' },
@@ -123,6 +131,7 @@
                 id: 'fries',
                 title: 'البطاطس والباكيت',
                 icon: 'fa-bowl-food',
+                image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80',
                 items: [
                     { name: 'ساندوتش فلافل سوري', price: '40 ج.م' },
                     { name: 'سوري عادي', price: '45 ج.م' },
@@ -145,6 +154,7 @@
                 id: 'sauces',
                 title: 'ركن الصوصات',
                 icon: 'fa-jar',
+                image: 'https://images.unsplash.com/photo-1472476443507-c7a5948772fc?auto=format&fit=crop&w=800&q=80',
                 items: [
                     { name: 'ثوميه', price: '15 ج.م' },
                     { name: 'ثوميه حاره', price: '15 ج.م' },
@@ -158,16 +168,16 @@
             }
         ];
 
-        // Render Menu Items
+        // Render Menu
         function renderMenu(data = menuData) {
             const container = document.getElementById('menu-container');
             container.innerHTML = '';
 
             if (data.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center text-slate-400 py-12">
-                        <i class="fa-solid fa-magnifying-glass text-3xl mb-3 opacity-50"></i>
-                        <p>عفواً، لا توجد نتائج تطابق بحثك</p>
+                    <div class="text-center text-slate-400 py-16">
+                        <i class="fa-solid fa-magnifying-glass text-4xl mb-3 opacity-40"></i>
+                        <p class="text-lg">عفواً، لا توجد وجبات تطابق بحثك</p>
                     </div>
                 `;
                 return;
@@ -179,36 +189,45 @@
                 cat.items.forEach(item => {
                     if (cat.hasBreadOptions) {
                         const pricesList = Object.entries(item.prices).map(([bread, price]) => `
-                            <div class="flex justify-between items-center bg-slate-800/80 px-3 py-1 rounded-lg text-xs">
+                            <div class="flex justify-between items-center bg-slate-800/80 px-3 py-1.5 rounded-lg text-xs border border-slate-700/50">
                                 <span class="text-slate-300 font-semibold">${bread}</span>
                                 <span class="text-amber-400 font-bold">${price}</span>
                             </div>
                         `).join('');
 
                         itemsHTML += `
-                            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition shadow-md">
-                                <h4 class="font-bold text-slate-100 text-lg mb-3 border-b border-slate-800/50 pb-2">${item.name}</h4>
-                                <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 hover:border-amber-500/30 transition shadow-md flex flex-col justify-between">
+                                <h4 class="font-bold text-slate-100 text-lg mb-3 border-b border-slate-800 pb-2">${item.name}</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
                                     ${pricesList}
                                 </div>
                             </div>
                         `;
                     } else {
                         itemsHTML += `
-                            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex justify-between items-center hover:border-slate-700 transition shadow-md">
+                            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex justify-between items-center hover:border-amber-500/30 transition shadow-md">
                                 <h4 class="font-bold text-slate-100 text-base">${item.name}</h4>
-                                <span class="text-amber-400 font-black text-base bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-500/20">${item.price}</span>
+                                <span class="text-amber-400 font-black text-base bg-amber-500/10 px-3.5 py-1.5 rounded-xl border border-amber-500/20">${item.price}</span>
                             </div>
                         `;
                     }
                 });
 
                 container.innerHTML += `
-                    <section id="${cat.id}" class="space-y-4 scroll-mt-36">
-                        <h3 class="text-xl font-black text-amber-400 flex items-center gap-2 border-b border-slate-800 pb-2">
-                            <i class="fa-solid ${cat.icon}"></i> ${cat.title}
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <section id="${cat.id}" class="space-y-4 scroll-mt-28">
+                        <!-- Category Header Banner with Image -->
+                        <div class="relative h-32 md:h-40 rounded-2xl overflow-hidden border border-slate-800 shadow-xl flex items-end p-4">
+                            <img src="${cat.image}" alt="${cat.title}" class="absolute inset-0 w-full h-full object-cover brightness-50">
+                            <div class="relative z-10 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center text-slate-950 text-xl font-black">
+                                    <i class="fa-solid ${cat.icon}"></i>
+                                </div>
+                                <h3 class="text-2xl font-black text-white drop-shadow-md">${cat.title}</h3>
+                            </div>
+                        </div>
+
+                        <!-- Items Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                             ${itemsHTML}
                         </div>
                     </section>
@@ -216,7 +235,7 @@
             });
         }
 
-        // Scroll smooth to selected category
+        // Smooth Navigation
         function scrollToCategory(id) {
             const section = document.getElementById(id);
             if (section) {
@@ -224,7 +243,7 @@
             }
         }
 
-        // Filter functionality
+        // Live Search Filter
         function filterMenu() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
             if (!query) {
@@ -240,7 +259,7 @@
             renderMenu(filtered);
         }
 
-        // Initialize Menu
+        // Initializing Menu
         renderMenu();
     </script>
 </body>
