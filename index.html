@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مارشال - ركن الشاورما</title>
+    <title>منيو مارشال - ركن الشاورما والجريل</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for Icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts (Cairo) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -19,66 +19,34 @@
         .gold-gradient {
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         }
-        .gold-text {
-            color: #fbbf24;
+        /* Hide scrollbar for category tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d97706;
-            border-radius: 4px;
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
-<body class="pb-24">
+<body class="pb-12">
 
-    <!-- Header / Hero Section -->
-    <header class="relative bg-slate-900 border-b border-amber-500/20 sticky top-0 z-30 shadow-xl backdrop-blur-md bg-opacity-95">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Header Section -->
+    <header class="bg-slate-900 border-b border-amber-500/20 sticky top-0 z-30 shadow-xl backdrop-blur-md bg-opacity-95">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-3 space-x-reverse">
                 <div class="w-12 h-12 rounded-full gold-gradient flex items-center justify-center text-slate-900 text-2xl font-black shadow-lg">
-                    <i class="fa-solid fa-utensils"></i>
+                    <i class="fa-solid fa-fire-flame-curled"></i>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-black text-amber-400 leading-tight">مارشال</h1>
-                    <p class="text-xs text-slate-400 font-semibold">ركن الشاورما والوجبات السريعة</p>
+                    <h1 class="text-2xl font-black text-amber-400 leading-tight">مطعم مارشال</h1>
+                    <p class="text-xs text-slate-400 font-semibold">قائمة الطعام (المنيو)</p>
                 </div>
             </div>
-            
-            <!-- Cart Button Trigger -->
-            <button onclick="toggleCart()" class="relative bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-xl transition flex items-center gap-2 shadow-lg">
-                <i class="fa-solid fa-cart-shopping text-lg"></i>
-                <span class="hidden sm:inline">السلة</span>
-                <span id="cart-badge" class="bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">0</span>
-            </button>
         </div>
     </header>
 
     <main class="max-w-4xl mx-auto px-4 pt-6">
-
-        <!-- Info & InstaPay Banner -->
-        <div class="bg-gradient-to-r from-amber-950/40 via-slate-900 to-amber-950/40 border border-amber-500/30 rounded-2xl p-4 mb-6 shadow-lg flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-mobile-screen-button text-amber-400 text-2xl"></i>
-                <div>
-                    <div class="text-xs text-slate-400">انستا باي (InstaPay)</div>
-                    <div class="font-bold text-amber-300 select-all">bodyyones85@instapay</div>
-                </div>
-            </div>
-            <div class="flex items-center gap-3 border-t md:border-t-0 border-slate-800 pt-3 md:pt-0 w-full md:w-auto justify-around">
-                <a href="tel:01004708787" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-2 rounded-lg flex items-center gap-2 border border-slate-700">
-                    <i class="fa-solid fa-phone text-green-400"></i> 01004708787
-                </a>
-                <a href="tel:01002588000" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-2 rounded-lg flex items-center gap-2 border border-slate-700">
-                    <i class="fa-solid fa-phone text-green-400"></i> 01002588000
-                </a>
-            </div>
-        </div>
 
         <!-- Search Bar -->
         <div class="relative mb-6">
@@ -87,129 +55,90 @@
         </div>
 
         <!-- Navigation Categories -->
-        <nav class="flex overflow-x-auto gap-2 pb-3 mb-6 no-scrollbar text-sm font-bold">
-            <button onclick="scrollToCategory('meals')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 transition border border-slate-700">ركن الوجبات</button>
-            <button onclick="scrollToCategory('shawarma')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 transition border border-slate-700">ركن الشاورما</button>
-            <button onclick="scrollToCategory('sandwiches')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 transition border border-slate-700">ركن السندوتشات</button>
-            <button onclick="scrollToCategory('fries')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 transition border border-slate-700">الفرنش فرايز والباكيت</button>
-            <button onclick="scrollToCategory('sauces')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 transition border border-slate-700">ركن الصوصات</button>
+        <nav class="flex overflow-x-auto gap-2 pb-3 mb-6 no-scrollbar text-sm font-bold sticky top-20 z-20 bg-slate-950/80 p-2 rounded-xl backdrop-blur-md border border-slate-800">
+            <button onclick="scrollToCategory('shawarma')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الشاورما</button>
+            <button onclick="scrollToCategory('grill')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الجريل والسندوتشات</button>
+            <button onclick="scrollToCategory('meals')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الوجبات</button>
+            <button onclick="scrollToCategory('fries')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">البطاطس والباكيت</button>
+            <button onclick="scrollToCategory('sauces')" class="whitespace-nowrap px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition border border-slate-700">ركن الصوصات</button>
         </nav>
 
-        <!-- Menu Container -->
+        <!-- Dynamic Menu Container -->
         <div id="menu-container" class="space-y-10"></div>
 
     </main>
 
-    <!-- Cart Drawer Modal -->
-    <div id="cart-drawer" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden transition-opacity">
-        <div class="fixed inset-y-0 left-0 max-w-full flex">
-            <div class="w-screen max-w-md bg-slate-900 text-slate-100 flex flex-col shadow-2xl border-r border-slate-800">
-                <!-- Header -->
-                <div class="p-4 bg-slate-950 border-b border-slate-800 flex justify-between items-center">
-                    <h2 class="text-xl font-bold flex items-center gap-2 text-amber-400">
-                        <i class="fa-solid fa-basket-shopping"></i> سلة الطلبات
-                    </h2>
-                    <button onclick="toggleCart()" class="text-slate-400 hover:text-white p-2 text-xl">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-
-                <!-- Items List -->
-                <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4">
-                    <!-- Dynamic Cart Content -->
-                </div>
-
-                <!-- Footer / Checkout -->
-                <div class="p-4 bg-slate-950 border-t border-slate-800 space-y-4">
-                    <div class="flex justify-between items-center text-lg font-bold">
-                        <span>الإجمالي:</span>
-                        <span id="cart-total" class="text-amber-400 text-xl">0 ج.م</span>
-                    </div>
-
-                    <div class="space-y-2">
-                        <input type="text" id="customer-name" placeholder="الاسم" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-sm text-slate-100">
-                        <input type="text" id="customer-address" placeholder="العنوان التفصيلي" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-sm text-slate-100">
-                    </div>
-
-                    <button onclick="sendOrderWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
-                        <i class="fa-brands fa-whatsapp text-xl"></i> إرسال الطلب عبر الواتساب
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript Data & Logic -->
     <script>
+        // Menu Data structured by user sections
         const menuData = [
-            {
-                id: 'meals',
-                title: 'ركن الوجبات',
-                icon: 'fa-utensils',
-                items: [
-                    { name: 'شاورما عربي', price: 160 },
-                    { name: 'شاورما ماريا', price: 170 },
-                    { name: 'شاورما تركي', price: 180 },
-                    { name: 'شاورما ايطالي', price: 180 },
-                    { name: 'صدور دجاج', price: 180 },
-                    { name: 'شيش طاووق', price: 180 }
-                ]
-            },
             {
                 id: 'shawarma',
                 title: 'ركن الشاورما',
                 icon: 'fa-drumstick-bite',
                 items: [
-                    { name: 'شاورما فراخ', price: 120 },
-                    { name: 'شاورما فراخ مشروم', price: 130 },
-                    { name: 'شاورما فراخ موزاريلا', price: 130 },
-                    { name: 'شاورما فراخ بطاطس', price: 125 },
-                    { name: 'شاورما فراخ ايطاليانو', price: 130 }
+                    { name: 'شاورما فراخ', price: '120 ج.م' },
+                    { name: 'شاورما فراخ مشروم', price: '130 ج.م' },
+                    { name: 'شاورما فراخ موزاريلا', price: '130 ج.م' },
+                    { name: 'شاورما فراخ بطاطس', price: '125 ج.م' },
+                    { name: 'شاورما فراخ ايطاليانو', price: '130 ج.م' }
                 ]
             },
             {
-                id: 'sandwiches',
-                title: 'ركن السندوتشات',
+                id: 'grill',
+                title: 'ركن الجريل والسندوتشات',
                 icon: 'fa-burger',
                 hasBreadOptions: true,
                 items: [
-                    { name: 'كرسبي', prices: { 'سوري': 120, 'فينو': 130, 'تورتيلا': 130 } },
-                    { name: 'زنجر', prices: { 'سوري': 120, 'فينو': 130, 'تورتيلا': 130 } },
-                    { name: 'شيش', prices: { 'سوري': 120, 'فينو': 130, 'تورتيلا': 130 } },
-                    { name: 'فاهيتا', prices: { 'سوري': 120, 'فينو': 130, 'تورتيلا': 130 } },
-                    { name: 'صدور دجاج مشويه', prices: { 'سوري': 150, 'فينو': 160, 'تورتيلا': 160 } },
-                    { name: 'هوت دوج', prices: { 'سوري': 100, 'فينو': 110, 'تورتيلا': 110 } },
-                    { name: 'كفته', prices: { 'سوري': 90, 'فينو': 100 } },
-                    { name: 'مشكل لحوم', prices: { 'سوري': 130, 'فينو': 140, 'تورتيلا': 140 } },
-                    { name: 'مشكل دجاج', prices: { 'سوري': 130, 'فينو': 140, 'تورتيلا': 140 } },
-                    { name: 'سوبر كرانشي', prices: { 'سوري': 130, 'فينو': 140, 'تورتيلا': 140 } },
-                    { name: 'برجر لحم فريش (عيش كيدزر)', prices: { 'سوري': 130 } },
-                    { name: 'برجر لحم فريش دوبل (عيش كيدزر)', prices: { 'سوري': 180 } },
-                    { name: 'تويستر زنجر', prices: { 'سوري': 150 } },
-                    { name: 'تويستر كرسبي', prices: { 'سوري': 150 } },
-                    { name: 'كاسديا', prices: { 'سوري': 150 } }
+                    { name: 'كرسبي', prices: { 'سوري': '120 ج.م', 'فينو': '130 ج.م', 'تورتيلا': '130 ج.م' } },
+                    { name: 'زنجر', prices: { 'سوري': '120 ج.م', 'فينو': '130 ج.م', 'تورتيلا': '130 ج.م' } },
+                    { name: 'شيش', prices: { 'سوري': '120 ج.م', 'فينو': '130 ج.م', 'تورتيلا': '130 ج.م' } },
+                    { name: 'فاهيتا', prices: { 'سوري': '120 ج.م', 'فينو': '130 ج.م', 'تورتيلا': '130 ج.م' } },
+                    { name: 'صدور دجاج مشويه', prices: { 'سوري': '150 ج.م', 'فينو': '160 ج.م', 'تورتيلا': '160 ج.م' } },
+                    { name: 'هوت دوج', prices: { 'سوري': '100 ج.م', 'فينو': '110 ج.م', 'تورتيلا': '110 ج.م' } },
+                    { name: 'كفته', prices: { 'سوري': '90 ج.م', 'فينو': '100 ج.م' } },
+                    { name: 'مشكل لحوم', prices: { 'سوري': '130 ج.م', 'فينو': '140 ج.م', 'تورتيلا': '140 ج.م' } },
+                    { name: 'مشكل دجاج', prices: { 'سوري': '130 ج.م', 'فينو': '140 ج.م', 'تورتيلا': '140 ج.م' } },
+                    { name: 'سوبر كرانشي', prices: { 'سوري': '130 ج.م', 'فينو': '140 ج.م', 'تورتيلا': '140 ج.م' } },
+                    { name: 'برجر لحم فريش (عيش كيزر)', prices: { 'سوري': '130 ج.م' } },
+                    { name: 'برجر لحم فريش دوبل (عيش كيزر)', prices: { 'سوري': '180 ج.م' } },
+                    { name: 'تويستر زنجر', prices: { 'سوري': '150 ج.م' } },
+                    { name: 'تويستر كرسبي', prices: { 'سوري': '150 ج.م' } },
+                    { name: 'كاسديا', prices: { 'سوري': '150 ج.م' } }
+                ]
+            },
+            {
+                id: 'meals',
+                title: 'ركن الوجبات',
+                icon: 'fa-utensils',
+                items: [
+                    { name: 'شاورما عربي', price: '160 ج.م' },
+                    { name: 'شاورما ماريا', price: '170 ج.م' },
+                    { name: 'شاورما تركي', price: '180 ج.م' },
+                    { name: 'شاورما ايطالي', price: '180 ج.م' },
+                    { name: 'وجبة صدور دجاج', price: '180 ج.م' },
+                    { name: 'وجبة شيش طاووق', price: '180 ج.م' }
                 ]
             },
             {
                 id: 'fries',
-                title: 'ركن البطاطس والباكيت',
+                title: 'البطاطس والباكيت',
                 icon: 'fa-bowl-food',
                 items: [
-                    { name: 'ساندوتش فلافل سوري', price: 40 },
-                    { name: 'سوري عادي', price: 45 },
-                    { name: 'سوري عادي تشيز', price: 55 },
-                    { name: 'فينو عادي', price: 70 },
-                    { name: 'فينو تشيز', price: 80 },
-                    { name: 'باكيت صغير صوصات', price: 45 },
-                    { name: 'باكيت كبير صوصات', price: 55 },
-                    { name: 'باكيت رنش صغير', price: 60 },
-                    { name: 'باكيت رنش كبير', price: 70 },
-                    { name: 'باكيت صغير تكساس', price: 60 },
-                    { name: 'باكيت كبير تكساس', price: 70 },
-                    { name: 'باكيت زنجر', price: 115 },
-                    { name: 'باكيت شاورما', price: 110 },
-                    { name: 'اضافة شيدر', price: 10 },
-                    { name: 'اضافة موزاريلا', price: 10 }
+                    { name: 'ساندوتش فلافل سوري', price: '40 ج.م' },
+                    { name: 'سوري عادي', price: '45 ج.م' },
+                    { name: 'سوري عادي تشيز', price: '55 ج.م' },
+                    { name: 'فينو عادي', price: '70 ج.م' },
+                    { name: 'فينو تشيز', price: '80 ج.م' },
+                    { name: 'باكيت صغير صوصات', price: '45 ج.م' },
+                    { name: 'باكيت كبير صوصات', price: '55 ج.م' },
+                    { name: 'باكيت رنش صغير', price: '60 ج.م' },
+                    { name: 'باكيت رنش كبير', price: '70 ج.م' },
+                    { name: 'باكيت صغير تكساس', price: '60 ج.م' },
+                    { name: 'باكيت كبير تكساس', price: '70 ج.م' },
+                    { name: 'باكيت زنجر', price: '115 ج.م' },
+                    { name: 'باكيت شاورما', price: '110 ج.م' },
+                    { name: 'اضافة شيدر', price: '10 ج.م' },
+                    { name: 'اضافة موزاريلا', price: '10 ج.م' }
                 ]
             },
             {
@@ -217,70 +146,66 @@
                 title: 'ركن الصوصات',
                 icon: 'fa-jar',
                 items: [
-                    { name: 'ثوميه', price: 15 },
-                    { name: 'ثوميه حاره', price: 15 },
-                    { name: 'طحينه', price: 15 },
-                    { name: 'صوص حار', price: 10 },
-                    { name: 'شيدر', price: 15 },
-                    { name: 'تكساس', price: 15 },
-                    { name: 'رانشي', price: 15 },
-                    { name: 'باربيكيو', price: 10 }
+                    { name: 'ثوميه', price: '15 ج.م' },
+                    { name: 'ثوميه حاره', price: '15 ج.م' },
+                    { name: 'طحينه', price: '15 ج.م' },
+                    { name: 'صوص حار', price: '10 ج.م' },
+                    { name: 'شيدر', price: '15 ج.م' },
+                    { name: 'تكساس', price: '15 ج.م' },
+                    { name: 'رانشي', price: '15 ج.م' },
+                    { name: 'باربيكيو', price: '10 ج.م' }
                 ]
             }
         ];
 
-        let cart = [];
-
-        // Render Menu
-        function renderMenu(dataToRender = menuData) {
+        // Render Menu Items
+        function renderMenu(data = menuData) {
             const container = document.getElementById('menu-container');
             container.innerHTML = '';
 
-            dataToRender.forEach(cat => {
+            if (data.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center text-slate-400 py-12">
+                        <i class="fa-solid fa-magnifying-glass text-3xl mb-3 opacity-50"></i>
+                        <p>عفواً، لا توجد نتائج تطابق بحثك</p>
+                    </div>
+                `;
+                return;
+            }
+
+            data.forEach(cat => {
                 let itemsHTML = '';
 
-                cat.items.forEach((item, index) => {
-                    if(cat.hasBreadOptions) {
-                        // Sandwich options format
-                        const breadKeys = Object.keys(item.prices);
-                        let optionsBtns = breadKeys.map((type, idx) => `
-                            <button onclick="addToCart('${item.name} (${type})', ${item.prices[type]})" 
-                                class="bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-amber-400 font-bold border border-amber-500/30 px-3 py-1.5 rounded-lg text-xs transition flex flex-col items-center">
-                                <span>${type}</span>
-                                <span class="text-slate-300 font-normal">${item.prices[type]} ج.م</span>
-                            </button>
+                cat.items.forEach(item => {
+                    if (cat.hasBreadOptions) {
+                        const pricesList = Object.entries(item.prices).map(([bread, price]) => `
+                            <div class="flex justify-between items-center bg-slate-800/80 px-3 py-1 rounded-lg text-xs">
+                                <span class="text-slate-300 font-semibold">${bread}</span>
+                                <span class="text-amber-400 font-bold">${price}</span>
+                            </div>
                         `).join('');
 
                         itemsHTML += `
-                            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between hover:border-slate-700 transition shadow-md">
-                                <div class="mb-3">
-                                    <h4 class="font-bold text-slate-100 text-lg">${item.name}</h4>
-                                </div>
-                                <div class="flex flex-wrap gap-2 mt-auto">
-                                    ${optionsBtns}
+                            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition shadow-md">
+                                <h4 class="font-bold text-slate-100 text-lg mb-3 border-b border-slate-800/50 pb-2">${item.name}</h4>
+                                <div class="grid grid-cols-2 gap-2">
+                                    ${pricesList}
                                 </div>
                             </div>
                         `;
                     } else {
-                        // Standard Item Format
                         itemsHTML += `
                             <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex justify-between items-center hover:border-slate-700 transition shadow-md">
-                                <div>
-                                    <h4 class="font-bold text-slate-100 text-base">${item.name}</h4>
-                                    <span class="text-amber-400 font-bold text-sm">${item.price} ج.م</span>
-                                </div>
-                                <button onclick="addToCart('${item.name}', ${item.price})" 
-                                    class="bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/40 p-2.5 rounded-xl transition">
-                                    <i class="fa-solid fa-plus text-base"></i>
-                                </button>
+                                <h4 class="font-bold text-slate-100 text-base">${item.name}</h4>
+                                <span class="text-amber-400 font-black text-base bg-amber-500/10 px-3 py-1 rounded-lg border border-amber-500/20">${item.price}</span>
                             </div>
                         `;
                     }
                 });
 
                 container.innerHTML += `
-                    <section id="${cat.id}" class="space-y-4">
-                        <h3 class="text-xl font-extrabold text-amber-400 flex items-center gap-2 border-b border-slate-800 pb-2">
+                    <section id="${cat.id}" class="space-y-4 scroll-mt-36">
+                        <h3 class="text-xl font-black text-amber-400 flex items-center gap-2 border-b border-slate-800 pb-2">
                             <i class="fa-solid ${cat.icon}"></i> ${cat.title}
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -291,72 +216,15 @@
             });
         }
 
-        // Add to Cart
-        function addToCart(name, price) {
-            const existing = cart.find(i => i.name === name);
-            if (existing) {
-                existing.qty++;
-            } else {
-                cart.push({ name, price, qty: 1 });
-            }
-            updateCartUI();
-        }
-
-        // Update Cart UI
-        function updateCartUI() {
-            const itemsContainer = document.getElementById('cart-items');
-            const badge = document.getElementById('cart-badge');
-            const totalEl = document.getElementById('cart-total');
-
-            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-
-            badge.innerText = totalItems;
-            totalEl.innerText = `${totalPrice} ج.م`;
-
-            if (cart.length === 0) {
-                itemsContainer.innerHTML = `
-                    <div class="text-center text-slate-500 py-12">
-                        <i class="fa-solid fa-cart-flatbed text-4xl mb-3 opacity-50"></i>
-                        <p>السلة فارغة حالياً</p>
-                    </div>
-                `;
-                return;
-            }
-
-            itemsContainer.innerHTML = cart.map((item, index) => `
-                <div class="bg-slate-800 border border-slate-700 rounded-xl p-3 flex justify-between items-center">
-                    <div>
-                        <div class="font-bold text-slate-200 text-sm">${item.name}</div>
-                        <div class="text-xs text-amber-400">${item.price} ج.م × ${item.qty} = ${item.price * item.qty} ج.م</div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="changeQty(${index}, -1)" class="w-7 h-7 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-bold">-</button>
-                        <span class="text-sm font-bold w-4 text-center">${item.qty}</span>
-                        <button onclick="changeQty(${index}, 1)" class="w-7 h-7 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-bold">+</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function changeQty(index, delta) {
-            cart[index].qty += delta;
-            if (cart[index].qty <= 0) {
-                cart.splice(index, 1);
-            }
-            updateCartUI();
-        }
-
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            drawer.classList.toggle('hidden');
-        }
-
+        // Scroll smooth to selected category
         function scrollToCategory(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            const section = document.getElementById(id);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
-        // Filter / Search Menu
+        // Filter functionality
         function filterMenu() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
             if (!query) {
@@ -372,34 +240,7 @@
             renderMenu(filtered);
         }
 
-        // Send WhatsApp Order
-        function sendOrderWhatsApp() {
-            if (cart.length === 0) {
-                alert("السلة فارغة، فضلاً أضف بعض الأصناف أولاً!");
-                return;
-            }
-
-            const name = document.getElementById('customer-name').value.trim();
-            const address = document.getElementById('customer-address').value.trim();
-
-            let message = `*طلب جديد من مطعم مارشال*%0A`;
-            if (name) message += `*الاسم:* ${name}%0A`;
-            if (address) message += `*العنوان:* ${address}%0A`;
-            message += `----------------------------%0A`;
-
-            cart.forEach(item => {
-                message += `• ${item.name} (x${item.qty}) - ${item.price * item.qty} ج.م%0A`;
-            });
-
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            message += `----------------------------%0A`;
-            message += `*الإجمالي:* ${totalPrice} ج.م`;
-
-            const phone = "201002588000";
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-        }
-
-        // Initial Render
+        // Initialize Menu
         renderMenu();
     </script>
 </body>
